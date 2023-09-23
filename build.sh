@@ -536,12 +536,13 @@ ln -sf ../../../../third-party/src/ModSecurity .
 cd ../../../
 #Done of modsecurity
 
-cd src/modules/lsrecaptcha
-export GOPATH=$CUR_PATH/src/modules/lsrecaptcha
-export GO111MODULE=off
-go build lsrecaptcha
-cp lsrecaptcha ../../../dist/lsrecaptcha/_recaptcha
-cd ../../../
+# cd src/modules/lsrecaptcha
+# export GOPATH=$CUR_PATH/src/modules/lsrecaptcha
+# export GO111MODULE=off
+# go build lsrecaptcha
+# cp lsrecaptcha ../../../dist/lsrecaptcha/_recaptcha
+# cd ../../../
+./src/modules/lsrecaptcha/build_lsrecaptcha.sh
 
 fixshmdir
 
@@ -685,7 +686,7 @@ if [ -f ../needreboot.txt ] ; then
     echo -e "\e[31mYou must reboot the server to ensure the settings change take effect!\e[39m"
     echo
     exit 0
-fi 
+fi
 
 if [ "\${ISRUNNING}" = "yes" ] ; then
     \${SERVERROOT}/bin/lswsctrl start

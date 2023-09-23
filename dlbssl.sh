@@ -41,19 +41,17 @@ elif [ ! -f $BSSLDIR/build/ssl/libssl.a ] ; then
     git checkout master
     git pull
 
-    git checkout 32e59d2d3264e4e104b355ef73663b8b79ac4093
+    git checkout 9fc1c33e9c21439ce5f87855a6591a9324e569fd
 
     rm -rf build
 
     detectdlcmd
     $DLCMD 1.patch https://raw.githubusercontent.com/litespeedtech/third-party/master/patches/boringssl/bssl_inttypes.patch
-    $DLCMD 2.patch https://raw.githubusercontent.com/litespeedtech/third-party/master/patches/boringssl/bssl_max_early_data_sz.patch
-    $DLCMD 3.patch https://raw.githubusercontent.com/litespeedtech/third-party/master/patches/boringssl/bssl_no_eoed.patch
+    $DLCMD 2.patch https://raw.githubusercontent.com/litespeedtech/third-party/master/patches/boringssl/bssl_lstls.patch
     
-    #patch -p1 < ../bssl_lstls.patch
     patch -p1 < 1.patch
     patch -p1 < 2.patch
-    patch -p1 < 3.patch
+
 
     mkdir build
     cd build

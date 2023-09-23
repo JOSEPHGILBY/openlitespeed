@@ -4,7 +4,7 @@ ARG OLS_VERSION
 ARG PHP_VERSION
 
 RUN dnf update -y 
-RUN dnf install -y wget tar git
+RUN dnf install -y wget tar git go
 # RUN apt-get update && apt-get install wget curl cron tzdata -y
 
 RUN wget https://openlitespeed.org/preuse/openlitespeed-$OLS_VERSION.tgz && \

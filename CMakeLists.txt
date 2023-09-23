@@ -137,6 +137,8 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
 #AND YOU NEED TO HAVE THE files ready in openlitespeed/ssl
 #You can run the dlbssl.sh to make them ready
 set(BSSL_ADD_LIB  libdecrepit.a)
+link_directories(${CMAKE_SOURCE_DIR}/ssl)
+include_directories(${CMAKE_SOURCE_DIR}/ssl/include)
 ##########################################################################################
 #If you want to use Brotli Compression, just un-comment out the following commands
 set(BROTLI_ADD_LIB  libbrotlidec-static.a libbrotlienc-static.a libbrotlicommon-static.a)
