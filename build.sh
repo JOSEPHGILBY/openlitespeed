@@ -545,6 +545,7 @@ cd ../../../
 ./src/modules/lsrecaptcha/build_lsrecaptcha.sh
 
 fixshmdir
+./dlbssl.sh
 
 if [ "x$1" == "xDebug" ]; then
     BUILD=Debug
