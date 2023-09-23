@@ -7,7 +7,6 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
-			"OLS_VERSION": "1.7.18",
 			"PHP_VERSION": "8.1"
 		}
 	}
