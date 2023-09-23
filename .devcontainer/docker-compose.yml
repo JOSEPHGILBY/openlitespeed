@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  mesa-dev-openls-src:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    networks:
+      - default
+    depends_on:
+      - mariadb
+      - mailhog
+  mailhog:
+    image: mailhog/mailhog
+    restart: unless-stopped
+    networks:
+      - default
+    ports:
+      - 8025:8025
+      - 1025:1025
+  mariadb:
+    image: mariadb:latest
+    restart: unless-stopped
+    networks:
+      - default
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+
+networks:
+  default:
+
+volumes:
+  mariadb-data:
+  

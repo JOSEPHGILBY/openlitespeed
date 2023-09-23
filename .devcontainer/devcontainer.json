@@ -1,26 +1,50 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-	"name": "Ubuntu",
+	// "name": "Ubuntu",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	// "image": "mcr.microsoft.com/devcontainers/base:jammy",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": {
-			"PHP_VERSION": "8.1"
-		}
-	}
+	// "build": {
+	// 	"dockerfile": "Dockerfile",
+	// 	"args": {
+	// 		"PHP_VERSION": "lsphp81"
+	// 	}
+	// },
+
+	"name": "mesa-dev-openls-src",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	//"image": "almalinux:8.4"
+	"dockerComposeFile": "docker-compose.yml",
+	// "build": {1
+	// 	"dockerfile": "Dockerfile"
+	// },
+	"service": "mesa-dev-openls-src",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "/workspaces/openlitespeed/.devcontainer/postcreate.sh",
+	"postStartCommand": "/workspaces/openlitespeed/.devcontainerr/poststart.sh",
+	"capAdd": ["SYS_PTRACE"],
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"bmewburn.vscode-intelephense-client",
+				"eamodio.gitlens",
+				"xdebug.php-debug",
+				"Vue.volar",
+				"Vue.vscode-typescript-vue-plugin",
+				"ms-vscode.cpptools-extension-pack"
+			]
+		}
+	}
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	// "customizations": {}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"

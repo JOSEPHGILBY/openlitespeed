@@ -546,7 +546,7 @@ cd ../../../
 
 fixshmdir
 ./dlbssl.sh
-
+echo "x$1" > /workspaces/openlitespeed/BUILD_TYPE_IS.txt
 if [ "x$1" == "xDebug" ]; then
     BUILD=Debug
 else

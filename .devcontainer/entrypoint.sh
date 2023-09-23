@@ -5,8 +5,8 @@ fi
 if [ -z "$(ls -A -- "/usr/local/lsws/admin/conf/")" ]; then
 	cp -R /usr/local/lsws/admin/.conf/* /usr/local/lsws/admin/conf/
 fi
-chown 999:999 /usr/local/lsws/conf -R
-chown 999:1000 /usr/local/lsws/admin/conf -R
+chown lsadm:lsadm /usr/local/lsws/conf -R
+chown lsadm:lsadm /usr/local/lsws/admin/conf -R
 
 /usr/local/lsws/bin/lswsctrl start
 $@
