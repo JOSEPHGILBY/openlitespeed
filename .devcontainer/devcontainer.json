@@ -26,8 +26,8 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "/workspaces/openlitespeed/.devcontainer/postcreate.sh",
-	"postStartCommand": "/workspaces/openlitespeed/.devcontainer/poststart.sh",
+	"postCreateCommand": "/workspaces/openlitespeed/.devcontainer/postcreate.sh 2>&1 | tee build_progress.txt",
+	"postStartCommand": "/workspaces/openlitespeed/.devcontainer/poststart.sh 2>&1 | tee start_progress.txt",
 	"capAdd": ["SYS_PTRACE"],
 
 	"customizations": {
