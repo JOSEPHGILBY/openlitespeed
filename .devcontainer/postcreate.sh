@@ -2,6 +2,7 @@
 PHP_VERSION="lsphp81"
 DIR=$(dirname "$0")
 
+git config http.postBuffer 524288000
 cp ./clone_repo.sh /usr/local/bin
 chmod +x /usr/local/bin/clone_repo.sh
 
