@@ -29,7 +29,10 @@ if [ -f ssl/libcrypto.a ] ; then
     
 elif [ ! -f $BSSLDIR/build/ssl/libssl.a ] ; then
     BSSLDIR=boringssl
-    git clone https://github.com/google/boringssl.git
+    clone_repo.sh https://github.com/google/boringssl.git boringssl
+    if [ $? -ne 0 ] ; then
+        exit 1
+    fi
     
     if [ -d "go" ]; then
         PATH=$PWD/go/bin:$PATH

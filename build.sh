@@ -67,7 +67,6 @@ fi
 #     fi
 # }
 
-
 getVersionNumber()
 {
     STRING=$1
@@ -139,7 +138,10 @@ preparelibquic()
         if [ $? -eq 0 ] ; then
             echo Need to git download the submodule ...
             rm -rf lsquic
-            git clone https://github.com/litespeedtech/lsquic.git
+            clone_repo.sh https://github.com/litespeedtech/lsquic.git lsquic
+            if [ $? -ne 0 ] ; then
+                exit 1
+            fi
             cd lsquic
             
             LIBQUICVER=`cat ../LSQUICCOMMIT`
@@ -503,7 +505,11 @@ fi
 cd ..
 if [ ! -d third-party ]; then
 
-    git clone https://github.com/litespeedtech/third-party.git
+    clone_repo.sh https://github.com/litespeedtech/third-party.git third-party
+    if [ $? -ne 0 ] ; then
+        exit 1
+    fi
+
     mkdir third-party/lib64
     cd third-party/script/
 
@@ -558,8 +564,14 @@ if [ ! -d build ]; then
 fi
 cd build
 cmake -DCMAKE_BUILD_TYPE=$BUILD ..
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
 jobs=$(nproc)
 make -j${jobs}
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
 cd ..
 
 cp build/src/openlitespeed  dist/bin/

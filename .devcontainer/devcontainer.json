@@ -27,7 +27,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "/workspaces/openlitespeed/.devcontainer/postcreate.sh",
-	"postStartCommand": "/workspaces/openlitespeed/.devcontainerr/poststart.sh",
+	"postStartCommand": "/workspaces/openlitespeed/.devcontainer/poststart.sh",
 	"capAdd": ["SYS_PTRACE"],
 
 	"customizations": {

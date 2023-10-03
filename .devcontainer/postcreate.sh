@@ -2,12 +2,21 @@
 PHP_VERSION="lsphp81"
 DIR=$(dirname "$0")
 
+cp ./clone_repo.sh /usr/local/bin
+chmod +x /usr/local/bin/clone_repo.sh
+
 if [ ! -f "$DIR/../BUILD_DONE" ]; then
     # If the BUILD_DONE file doesn't exist, call build.sh and create the BUILD_DONE file
-    "$DIR/../build.sh"
+    "$DIR/../build.sh" Debug
+    if [ $? -ne 0 ] ; then
+        exit 1
+    fi
     touch "$DIR/../BUILD_DONE"
 fi
 "$DIR/../install.sh"
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
 echo 'cloud-docker' > /usr/local/lsws/PLAT
 
 dnf install -y mysql $PHP_VERSION $PHP_VERSION-mysqlnd $PHP_VERSION-common $PHP_VERSION-opcache \
