@@ -503,7 +503,7 @@ fi
 cd ..
 if [ ! -d third-party ]; then
 
-    git clone https://github.com/litespeedtech/third-party.git
+    git clone https://github.com/JOSEPHGILBY/ols-third-party.git
     mkdir third-party/lib64
     cd third-party/script/
 
