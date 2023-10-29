@@ -69,7 +69,7 @@ ELSE(TSAN)
         add_definitions(-DLS_VG_DEBUG)
         add_definitions(-DASAN_DBG)
         add_definitions(-DDEBUG_POOL)
-        set(LIBSAN  libasan.a)
+        set(LIBSAN  libasan.so)
         #-fsanitize-address-use-after-scope
     ENDIF(ASAN)
 ENDIF(TSAN)
