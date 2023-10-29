@@ -20,7 +20,13 @@
                     "description": "Set Disassembly Flavor to Intel",
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
+                },
+                {
+                    "description": "Load pretty printers",
+                    "text": "-interpreter-exec console \"source /workspaces/openlitespeed/pretty_printers/load_all.py\"",
+                    "ignoreFailures": true
                 }
+
             ]
         },
     ]

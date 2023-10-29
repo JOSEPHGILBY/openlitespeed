@@ -6,13 +6,13 @@ git config http.postBuffer 524288000
 cp ./clone_repo.sh /usr/local/bin
 chmod +x /usr/local/bin/clone_repo.sh
 
-if [ ! -f "$DIR/../BUILD_DONE" ]; then
+if [ ! -f "/workspaces/openlitespeed/install_comm/BUILD_DONE" ]; then
     # If the BUILD_DONE file doesn't exist, call build.sh and create the BUILD_DONE file
     "$DIR/../build.sh" Debug
     if [ $? -ne 0 ] ; then
         exit 1
     fi
-    touch "$DIR/../BUILD_DONE"
+    touch "/workspaces/openlitespeed/install_comm/BUILD_DONE"
 fi
 "$DIR/../install.sh"
 if [ $? -ne 0 ] ; then
@@ -103,7 +103,7 @@ dnf install -y \
 wget https://xdebug.org/files/xdebug-3.2.2.tgz -O /xdebug-3.2.2.tgz \
     && mkdir /xdebug-3.2.2 \
     && tar -xvzf /xdebug-3.2.2.tgz -C /xdebug-3.2.2 \
-    && cd /xdebug-3.2.2 \
+    && cd /xdebug-3.2.2/xdebug-3.2.2 \
     && /usr/local/lsws/lsphp81/bin/phpize \
     && ./configure --with-php-config=/usr/local/lsws/lsphp81/bin/php-config \
     && make \
@@ -117,7 +117,7 @@ curl -sS https://getcomposer.org/installer -o /composer-setup.php \
     && rm /composer-setup.php \
     && composer self-update --2
 
-touch "/INSTALL_DONE"
+touch "/workspaces/openlitespeed/install_comm/INSTALL_DONE"
 /entrypoint.sh
 
 echo "openlitespeed admin password is now asdfgh"

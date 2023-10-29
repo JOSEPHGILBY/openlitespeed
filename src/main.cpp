@@ -25,6 +25,8 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 
 //#define WANT_LSAN 1
@@ -57,6 +59,19 @@ extern "C" int __lsan_is_turned_off() { return ls_lsan_off; }
 static LshttpdMain *s_pLshttpd = NULL;
 int main(int argc, char *argv[])
 {
+    // Continually check for the existence of the file
+    FILE *file;
+    while(true)
+    {
+        file = fopen("/workspaces/openlitespeed/DEBUG_READY", "r");
+        if(file != NULL)
+        {
+            fclose(file);
+            break;
+        }
+        sleep(1);  // Sleep for a second
+    }
+    
     s_pLshttpd = new LshttpdMain();
     if (!s_pLshttpd)
     {

@@ -10,6 +10,11 @@ services:
     command: sleep infinity
     networks:
       - default
+    ports:
+      - 7080:7080
+      - 8000:80
+      - 8001:443
+      - 5173:5173
     depends_on:
       - mariadb
       - mailhog
