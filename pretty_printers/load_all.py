@@ -22,7 +22,7 @@ for file in printer_files:
         pascal_case_module_name = ''.join(word.title() for word in module_name.split('_'))
         
         # Add the printer from this module to "my_library"
-        pp.add_printer(module_name, '^' + pascal_case_module_name + '$', module.build_pretty_printer())
+        pp.add_printer(module_name, '^' + pascal_case_module_name + '(<.*>)?$', module.build_pretty_printer())
 
 # Register "my_library" with gdb
 gdb.printing.register_pretty_printer(gdb.current_objfile(), pp)

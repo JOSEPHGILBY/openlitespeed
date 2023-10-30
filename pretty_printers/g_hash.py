@@ -5,8 +5,9 @@ class GHashPrinter:
         self.val = val
 
     def to_string(self):
-        eval_string = "(*("+str(self.val.type)+"*)("+str(self.val.address)+")).method()"
-        return "a string"
+        eval_string = "(*("+str(self.val.type)+"*)("+str(self.val.address)+")).begin()"
+        first = gdb.parse_and_eval(eval_string)
+        return "str(first)"
         # result = 'GHash:\n'
         # begin = self.val'begin'
         # end = self.val'end'
