@@ -1,0 +1,20 @@
+source /workspaces/openlitespeed/pretty_printers/load_all.py
+b /workspaces/openlitespeed/src/main.cpp:66
+b /workspaces/openlitespeed/src/main/lshttpdmain.cpp:931
+p *(GHash *)m_pBuilder.m_pRoot.m_impl.m_pChildrenMap
+p *(HashStringMap<XmlNodeList *>*)m_pBuilder.m_pRoot.m_impl.m_pChildrenMap
+python import pdb
+python pdb.run('gdb.execute("print $1")')
+from g_hash import GHashPrinter
+b GHashPrinter.children
+from hash_string_map import HashStringMapPrinter
+
+
+"(*({})({}))".format(current.type, current)
+"(*({}*)({}))".format(self.val.type, self.val.address)
+
+gdb.parse_and_eval("(*(GHash*)(0x608000001820)).next(((GHash::HashElem *)(0x633000010ae0)))")
+
+p *(HashStringMap<XmlNodeList *>*)m_pBuilder.m_pRoot.m_impl.m_pChildrenMap
+
+!test = gdb.parse_and_eval("(*(XmlNodeList *)(0x603000000670))")
